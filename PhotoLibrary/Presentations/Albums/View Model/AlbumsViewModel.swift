@@ -12,28 +12,42 @@ protocol AlbumsViewModelDelegate: class {
     func isLoading(loading: Bool)
     func showError(message: String)
     func dataLoaded(albums: [Album])
+    func additionalDataLoaded(albums: [Album])
 }
 class AlbumsViewModel {
     weak var delegate: AlbumsViewModelDelegate?
     
     var networkManager = NetworkManager()
+    var nextPageToken: String? = nil
     
-    
-    func getAlbums(nextPageToken: String? = nil) {
+    func getAlbums() {
         //        print("e311")
         self.delegate?.isLoading(loading: true)
-        networkManager.getAlbums(nextPageToken: nextPageToken) { albums, error in
-            print("e3113")
+        networkManager.getAlbums(nextPageToken: nextPageToken) { albumResponse, error in
+            //            print("e3113")
             
             self.delegate?.isLoading(loading: false)
             if let error = error {
                 self.delegate?.showError(message: error)
             }
-            if let albums = albums {
+            if let albumResponse = albumResponse {
                 DispatchQueue.main.async {
+                    if self.nextPageToken == nil {
+                        self.delegate?.dataLoaded(albums: albumResponse.albums)
+                    }
+                    else {
+                        self.delegate?.additionalDataLoaded(albums: albumResponse.albums)
+                    }
+                    self.nextPageToken = albumResponse.nextPageToken
                 }
             }
         }
-        
+    }
+    
+    func loadNextPage() {
+        if nextPageToken == nil {
+            return
+        }
+        getAlbums()
     }
 }

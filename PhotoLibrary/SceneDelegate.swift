@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, GIDSignInDelegate {
         }
         NetworkManager.googleToken = user.authentication.accessToken
         
-         window?.rootViewController = AlbumsVC().fromSB()
+        window?.rootViewController = AlbumsVC().fromSB().navigationController ?? AlbumsVC().fromSB()
 //        self.presentFullScreen(vc: AlbumsVC().fromSB())
     }
     

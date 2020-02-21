@@ -19,6 +19,7 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
+    
     func timeIn24HourFormat() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .none

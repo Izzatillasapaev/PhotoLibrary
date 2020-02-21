@@ -28,8 +28,41 @@ struct NetworkManager {
     static var googleToken = ""
     let router = Router<GooglePhotosApi>()
     
-    func getAlbums(nextPageToken: String?, completion: @escaping (_ albums: [Album]?,_ error: String?)->()){
+    func getAlbums(nextPageToken: String?, completion: @escaping (_ albumResponse: AlbumApiResponse?,_ error: String?)->()){
         router.request(.albums(nextPageToken: nextPageToken)) { data, response, error in
+            
+            if error != nil {
+                completion(nil, "Please check your network connection.")
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+//                 print(333,NSString(data: data!, encoding:String.Encoding.utf8.rawValue)!)
+                switch result {
+                case .success:
+                   
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue)
+                        return
+                    }
+                    do {
+                        print(responseData)
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let apiResponse = try JSONDecoder().decode(AlbumApiResponse.self, from: responseData)
+                        completion(apiResponse,nil)
+                    }catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError)
+                }
+            }
+        }
+    }
+    func getPhotos(nextPageToken: String?, albumId: String, completion: @escaping (_ photoResponse: PhotoApiResponse?,_ error: String?)->()){
+        router.request(.photos(nextPageToken: nextPageToken, albumId: albumId)) { data, response, error in
             
             if error != nil {
                 completion(nil, "Please check your network connection.")
@@ -49,8 +82,8 @@ struct NetworkManager {
                         print(responseData)
                         let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                         print(jsonData)
-                        let apiResponse = try JSONDecoder().decode(AlbumApiResponse.self, from: responseData)
-                        completion(apiResponse.albums,nil)
+                        let apiResponse = try JSONDecoder().decode(PhotoApiResponse.self, from: responseData)
+                        completion(apiResponse, nil)
                     }catch {
                         print(error)
                         completion(nil, NetworkResponse.unableToDecode.rawValue)

@@ -14,6 +14,7 @@ enum NetworkEnvironment {
 
 public enum GooglePhotosApi {
     case albums(nextPageToken: String?)
+    case photos(nextPageToken: String?, albumId: String)
 }
 
 extension GooglePhotosApi: EndPointType {
@@ -33,6 +34,8 @@ extension GooglePhotosApi: EndPointType {
         switch self {
         case .albums:
             return "albums/"
+        case .photos:
+            return "mediaItems:search"
         }
     }
     
@@ -40,6 +43,8 @@ extension GooglePhotosApi: EndPointType {
         switch self {
         case .albums:
             return .get
+        case .photos:
+            return .post
         }
     }
     
@@ -52,6 +57,14 @@ extension GooglePhotosApi: EndPointType {
             else {
                 return .requestParametersAndHeaders(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["pageSize":30, "excludeNonAppCreatedData":false], additionHeaders: ["Authorization": "Bearer \(NetworkManager.googleToken)"])
             }
+        case .photos(let nextPageToken, let albumId):
+            if let pageToken = nextPageToken {
+                return .requestParametersAndHeaders(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["pageSize":30,  "pageToken":pageToken, "albumId":albumId], additionHeaders: ["Authorization": "Bearer \(NetworkManager.googleToken)"])
+            }
+            else {
+                return .requestParametersAndHeaders(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["pageSize":30,  "albumId":albumId], additionHeaders: ["Authorization": "Bearer \(NetworkManager.googleToken)"])
+            }
+            
         default:
             return .request
         }
