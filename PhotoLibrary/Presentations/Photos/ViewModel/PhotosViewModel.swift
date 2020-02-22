@@ -15,21 +15,20 @@ protocol PhotosViewModelDelegate: class {
     func additionalDataLoaded(photos: [Photo])
 }
 
-class PhotosViewModel {
+final class PhotosViewModel {
     weak var delegate: PhotosViewModelDelegate?
-    
     var networkManager = NetworkManager()
-    
     var nextPageToken: String? = nil
     var albumId: String
+    
     init(albumId: String) {
         self.albumId = albumId
     }
+    
     func getPhotos() {
         //        print("e311")
         self.delegate?.isLoading(loading: true)
         networkManager.getPhotos(nextPageToken: nextPageToken, albumId: albumId) { photosResponse, error in
-            //            print("e3113")
             
             self.delegate?.isLoading(loading: false)
             if let error = error {

@@ -8,18 +8,18 @@
 
 import UIKit
 
-class PhotoViewerCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
-    @IBOutlet weak var myScrollView: UIScrollView!
-    @IBOutlet weak var backImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var backView: UIView!
-    
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+final class PhotoViewerCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
+    @IBOutlet private weak var myScrollView: UIScrollView!
+    @IBOutlet private weak var backImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var backView: UIView!
+    @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var widthConstraint: NSLayoutConstraint!
     
     var onShare: (_ url: String, _ image: UIImage, _ text: String) -> () = {_,_,_  in}
     var photo: Photo?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         myScrollView.delegate = self

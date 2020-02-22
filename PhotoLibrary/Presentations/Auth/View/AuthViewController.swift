@@ -8,25 +8,18 @@
 
 import UIKit
 import GoogleSignIn
-class AuthViewController: UIViewController , AuthViewModelDelegate {
-    
-    
-    
+final class AuthViewController: UIViewController , AuthViewModelDelegate {
+
     var viewModel = AuthViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         viewModel.delegate = self
-        
-        
-        
+  
     }
-    
-    
-    
+  
     //MARK: Actions
     
     @IBAction func signInPressed(_ sender: Any) {
@@ -35,8 +28,5 @@ class AuthViewController: UIViewController , AuthViewModelDelegate {
     @IBAction func signUpPressed(_ sender: Any) {
         viewModel.signUp()
     }
-    
-    //MARK: Delegates
-    
     
 }

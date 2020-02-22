@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PhotoViewerVC: UIViewController {
+final class PhotoViewerVC: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     var photos: [Photo] = []
     var indexPath: IndexPath!
@@ -18,10 +18,8 @@ class PhotoViewerVC: UIViewController {
         super.viewDidLoad()
 
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        // Do any additional setup after loading the view.
-    }
+     }
     
-
     @IBAction func dismissPressed(_ sender: Any) {
         self.dismissSelf()
         

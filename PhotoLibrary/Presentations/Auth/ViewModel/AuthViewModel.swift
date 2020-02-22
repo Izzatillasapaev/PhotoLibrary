@@ -13,7 +13,7 @@ protocol AuthViewModelDelegate: class {
     
 }
 
-class AuthViewModel {
+final class AuthViewModel {
     weak var delegate: AuthViewModelDelegate?
     
     func signIn() {

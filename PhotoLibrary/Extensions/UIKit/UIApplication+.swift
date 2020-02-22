@@ -1,10 +1,3 @@
-//
-//  UIApplication+.swift
-//  AKV
-//
-//  Created by Izzatilla on 11.01.2020.
-//  Copyright © 2020 User. All rights reserved.
-//
 
 import UIKit
 extension UIApplication {

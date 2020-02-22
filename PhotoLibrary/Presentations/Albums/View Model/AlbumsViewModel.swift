@@ -14,17 +14,14 @@ protocol AlbumsViewModelDelegate: class {
     func dataLoaded(albums: [Album])
     func additionalDataLoaded(albums: [Album])
 }
-class AlbumsViewModel {
+final class AlbumsViewModel {
     weak var delegate: AlbumsViewModelDelegate?
-    
     var networkManager = NetworkManager()
     var nextPageToken: String? = nil
     
     func getAlbums() {
-        //        print("e311")
         self.delegate?.isLoading(loading: true)
         networkManager.getAlbums(nextPageToken: nextPageToken) { albumResponse, error in
-            //            print("e3113")
             
             self.delegate?.isLoading(loading: false)
             if let error = error {

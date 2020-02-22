@@ -1,10 +1,3 @@
-//
-//  UINavigationBar+.swift
-//  AKV
-//
-//  Created by Izzatilla on 17.11.2019.
-//  Copyright © 2019 User. All rights reserved.
-//
 
 import UIKit
 extension UINavigationBar {

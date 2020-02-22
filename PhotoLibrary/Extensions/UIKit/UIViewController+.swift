@@ -1,10 +1,3 @@
-//
-//  UIViewController+.swift
-//  AKV
-//
-//  Created by Izzatilla on 08.11.2019.
-//  Copyright © 2019 User. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -23,7 +16,6 @@ extension UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false, completion: nil)
     }
-    // swiftlint:disable all
   // MARK: Progress hud
    
   func fromSB() -> Self {

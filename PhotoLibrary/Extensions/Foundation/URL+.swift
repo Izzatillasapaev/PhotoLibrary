@@ -1,10 +1,4 @@
-//
-//  URL+.swift
-//  AKV
-//
-//  Created by Izzatilla on 21.12.2019.
-//  Copyright © 2019 User. All rights reserved.
-//
+
 
 import Foundation
 

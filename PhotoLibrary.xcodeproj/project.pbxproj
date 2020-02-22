@@ -18,7 +18,6 @@
 		F43529A723E7F7B3006AACD0 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435299923E7F7B3006AACD0 /* JSONParameterEncoder.swift */; };
 		F43529A823E7F7B3006AACD0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435299B23E7F7B3006AACD0 /* NetworkManager.swift */; };
 		F43529A923E7F7B3006AACD0 /* PhotosEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435299D23E7F7B3006AACD0 /* PhotosEndPoint.swift */; };
-		F43529AA23E7F7B3006AACD0 /* NetworkROUTER.swift in Sources */ = {isa = PBXBuildFile; fileRef = F435299F23E7F7B3006AACD0 /* NetworkROUTER.swift */; };
 		F43529AB23E7F7B3006AACD0 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43529A023E7F7B3006AACD0 /* HTTPTask.swift */; };
 		F43529AC23E7F7B3006AACD0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43529A123E7F7B3006AACD0 /* HTTPMethod.swift */; };
 		F43529AD23E7F7B3006AACD0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43529A223E7F7B3006AACD0 /* Router.swift */; };
@@ -51,7 +50,6 @@
 		F4CBE9A623E7414800299D35 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99123E7414800299D35 /* UIApplication+.swift */; };
 		F4CBE9A723E7414800299D35 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99223E7414800299D35 /* UIColor+.swift */; };
 		F4CBE9A823E7414800299D35 /* UINavigationBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99323E7414800299D35 /* UINavigationBar+.swift */; };
-		F4CBE9A923E7414800299D35 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99523E7414800299D35 /* UserDefaults+.swift */; };
 		F4CBE9AA23E7414800299D35 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99623E7414800299D35 /* Collection+.swift */; };
 		F4CBE9AB23E7414800299D35 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99723E7414800299D35 /* NSObject+.swift */; };
 		F4CBE9AC23E7414800299D35 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CBE99823E7414800299D35 /* String+.swift */; };
@@ -78,7 +76,6 @@
 		F435299923E7F7B3006AACD0 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		F435299B23E7F7B3006AACD0 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F435299D23E7F7B3006AACD0 /* PhotosEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosEndPoint.swift; sourceTree = "<group>"; };
-		F435299F23E7F7B3006AACD0 /* NetworkROUTER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkROUTER.swift; sourceTree = "<group>"; };
 		F43529A023E7F7B3006AACD0 /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
 		F43529A123E7F7B3006AACD0 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		F43529A223E7F7B3006AACD0 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -113,7 +110,6 @@
 		F4CBE99123E7414800299D35 /* UIApplication+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		F4CBE99223E7414800299D35 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		F4CBE99323E7414800299D35 /* UINavigationBar+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+.swift"; sourceTree = "<group>"; };
-		F4CBE99523E7414800299D35 /* UserDefaults+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		F4CBE99623E7414800299D35 /* Collection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
 		F4CBE99723E7414800299D35 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		F4CBE99823E7414800299D35 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -239,7 +235,6 @@
 		F435299E23E7F7B3006AACD0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				F435299F23E7F7B3006AACD0 /* NetworkROUTER.swift */,
 				F43529A023E7F7B3006AACD0 /* HTTPTask.swift */,
 				F43529A123E7F7B3006AACD0 /* HTTPMethod.swift */,
 				F43529A223E7F7B3006AACD0 /* Router.swift */,
@@ -391,7 +386,6 @@
 		F4CBE99423E7414800299D35 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				F4CBE99523E7414800299D35 /* UserDefaults+.swift */,
 				F4CBE99623E7414800299D35 /* Collection+.swift */,
 				F4CBE99723E7414800299D35 /* NSObject+.swift */,
 				F4CBE99823E7414800299D35 /* String+.swift */,
@@ -583,7 +577,6 @@
 			files = (
 				F43529AE23E7F7B3006AACD0 /* NetworkLogger.swift in Sources */,
 				F4CBE9B023E7414800299D35 /* Date+.swift in Sources */,
-				F4CBE9A923E7414800299D35 /* UserDefaults+.swift in Sources */,
 				F4CBE9AF23E7414800299D35 /* Numeric+.swift in Sources */,
 				F4CBE99F23E7414800299D35 /* UIView+.swift in Sources */,
 				F4A9C4D3240086100066416E /* PhotosCollectionViewCell.swift in Sources */,
@@ -591,7 +584,6 @@
 				F4CBE9AE23E7414800299D35 /* Formatter+.swift in Sources */,
 				F4A9C4C724006A9E0066416E /* Photo.swift in Sources */,
 				F4CBE99D23E7414800299D35 /* Injectable.swift in Sources */,
-				F43529AA23E7F7B3006AACD0 /* NetworkROUTER.swift in Sources */,
 				F4CBE9AA23E7414800299D35 /* Collection+.swift in Sources */,
 				F4CBE9A623E7414800299D35 /* UIApplication+.swift in Sources */,
 				F43529AD23E7F7B3006AACD0 /* Router.swift in Sources */,

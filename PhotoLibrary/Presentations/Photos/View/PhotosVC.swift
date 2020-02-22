@@ -8,36 +8,22 @@
 
 import UIKit
 
-class PhotosVC: UIViewController, PhotosViewModelDelegate {
-    
-    
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+final class PhotosVC: UIViewController {
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     var photos: [Photo] = []
     var albumId: String?
     var viewModel: PhotosViewModel!
     
-//    init(albumId: String) {
-//        viewModel = PhotosViewModel(albumId: albumId)
-//        super.init(nibName: nil, bundle: nil)
-//
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if albumId == nil {
-             fatalError("albumId has not been implemented")
+            fatalError("albumId has not been implemented")
         }
         viewModel = PhotosViewModel(albumId: albumId!)
         viewModel.delegate = self
         viewModel.getPhotos()
         
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
@@ -58,24 +44,6 @@ class PhotosVC: UIViewController, PhotosViewModelDelegate {
         
     }
     
-    //MARK: Delegates
-    func dataLoaded(photos: [Photo]) {
-        self.photos = photos
-        print(111, photos.count)
-        self.collectionView.reloadData()
-    }
-    
-    func additionalDataLoaded(photos: [Photo]) {
-        self.photos += photos
-        self.collectionView.reloadData()
-    }
-    
-    func isLoading(loading: Bool) {
-        loading ? self.showSpinner(onView: self.view) : self.removeSpinner()
-    }
-    
-    func showError(error: String) {
-        self.showAlert(title: "Ошибка", messageBody: error)    }
 }
 
 extension PhotosVC: UICollectionViewDataSource {
@@ -104,8 +72,6 @@ extension PhotosVC: UICollectionViewDelegate {
         let vc = PhotoViewerVC().fromSB()
         vc.photos = photos
         vc.indexPath = indexPath
-//        vc.photos = self.photos
-//        self.navigationController?.pushViewController(vc, animated: false)
         self.presentFullScreen(vc: vc)
     }
 }
@@ -113,5 +79,27 @@ extension PhotosVC: UICollectionViewDelegate {
 extension PhotosVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.getSizeForCell()
+    }
+}
+
+extension PhotosVC: PhotosViewModelDelegate {
+    //MARK: Delegates
+    func dataLoaded(photos: [Photo]) {
+        self.photos = photos
+        print(111, photos.count)
+        self.collectionView.reloadData()
+    }
+    
+    func additionalDataLoaded(photos: [Photo]) {
+        self.photos += photos
+        self.collectionView.reloadData()
+    }
+    
+    func isLoading(loading: Bool) {
+        loading ? self.showSpinner(onView: self.view) : self.removeSpinner()
+    }
+    
+    func showError(error: String) {
+        self.showAlert(title: "Ошибка", messageBody: error)
     }
 }
