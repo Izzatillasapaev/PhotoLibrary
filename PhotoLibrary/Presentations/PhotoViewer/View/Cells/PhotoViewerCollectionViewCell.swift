@@ -18,8 +18,8 @@ class PhotoViewerCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
-    var onShare: (_ url: String) -> () = {_ in}
-    var url: String?
+    var onShare: (_ url: String, _ image: UIImage, _ text: String) -> () = {_,_,_  in}
+    var photo: Photo?
     override func awakeFromNib() {
         super.awakeFromNib()
         myScrollView.delegate = self
@@ -33,17 +33,17 @@ class PhotoViewerCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate 
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//        scrollView.zoomScale = 1.0
+        //        scrollView.zoomScale = 1.0
     }
     
     @IBAction func sharePressed(_ sender: Any) {
-        if url == nil {
+        if photo == nil {
             return
         }
-        self.onShare(url!)
+        self.onShare(photo!.baseUrl, self.backImageView.image ?? UIImage(named: "default")!, photo!.filename)
     }
     
-    func configure(photo: Photo, onShare: @escaping (_ url: String) -> (), size: CGSize) {
+    func configure(photo: Photo, onShare: @escaping (_ url: String, _ image: UIImage, _ text: String) -> (), size: CGSize) {
         
         widthConstraint.constant = size.width
         heightConstraint.constant = size.height
@@ -57,7 +57,7 @@ class PhotoViewerCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate 
             dateLabel.isHidden = true
         }
         self.onShare = onShare
-        self.url = photo.baseUrl
+        self.photo = photo
         self.backImageView.imageFromServerURL(photo.baseUrl)
         self.myScrollView.contentSize = size
     }

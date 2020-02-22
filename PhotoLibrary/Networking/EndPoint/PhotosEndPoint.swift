@@ -65,8 +65,7 @@ extension GooglePhotosApi: EndPointType {
                 return .requestParametersAndHeaders(bodyParameters: nil, bodyEncoding: .urlEncoding, urlParameters: ["pageSize":30,  "albumId":albumId], additionHeaders: ["Authorization": "Bearer \(NetworkManager.googleToken)"])
             }
             
-        default:
-            return .request
+        
         }
     }
     
