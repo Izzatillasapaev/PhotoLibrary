@@ -32,11 +32,17 @@ class AlbumsViewModel {
             }
             if let albumResponse = albumResponse {
                 DispatchQueue.main.async {
+                    let albums = albumResponse.albums.filter {
+                        $0.mediaItemsCount != nil
+                    }
                     if self.nextPageToken == nil {
-                        self.delegate?.dataLoaded(albums: albumResponse.albums)
+                        
+                        
+                        self.delegate?.dataLoaded(albums: albums)
                     }
                     else {
-                        self.delegate?.additionalDataLoaded(albums: albumResponse.albums)
+                        
+                        self.delegate?.additionalDataLoaded(albums: albums)
                     }
                     self.nextPageToken = albumResponse.nextPageToken
                 }

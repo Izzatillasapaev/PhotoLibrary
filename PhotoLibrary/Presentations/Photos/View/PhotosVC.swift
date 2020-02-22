@@ -99,6 +99,15 @@ extension PhotosVC: UICollectionViewDelegate {
             self.viewModel.loadNextPage()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PhotoViewerVC().fromSB()
+        vc.photos = photos
+        vc.indexPath = indexPath
+//        vc.photos = self.photos
+//        self.navigationController?.pushViewController(vc, animated: false)
+        self.presentFullScreen(vc: vc)
+    }
 }
 
 extension PhotosVC: UICollectionViewDelegateFlowLayout {

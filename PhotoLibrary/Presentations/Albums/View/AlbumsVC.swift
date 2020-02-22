@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class AlbumsVC: UIViewController, AlbumsViewModelDelegate {
     
@@ -19,7 +20,7 @@ class AlbumsVC: UIViewController, AlbumsViewModelDelegate {
     
     var viewModel = AlbumsViewModel()
 
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +40,11 @@ class AlbumsVC: UIViewController, AlbumsViewModelDelegate {
     }
     
     
+    @IBAction func signOutPressed(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        self.presentFullScreen(vc: AuthViewController().fromSB())
+               
+    }
     func getSizeForCell() -> CGSize {
         let screenSize =  UIScreen.main.bounds
         if screenSize.width < screenSize.height {

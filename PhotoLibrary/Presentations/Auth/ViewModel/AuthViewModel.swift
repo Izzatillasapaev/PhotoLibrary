@@ -20,7 +20,6 @@ class AuthViewModel {
         GIDSignIn.sharedInstance()?.scopes = ["https://www.googleapis.com/auth/photoslibrary.readonly", "https://www.googleapis.com/auth/photoslibrary", "https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata"]
         GIDSignIn.sharedInstance()?.signIn()
         
-        
     }
     
     func signUp() {
