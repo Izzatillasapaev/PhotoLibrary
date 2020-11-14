@@ -77,6 +77,7 @@ extension AlbumsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PhotosVC().fromSB()
         vc.albumId = albums[indexPath.row].id
+        vc.title = albums[indexPath.row].title
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

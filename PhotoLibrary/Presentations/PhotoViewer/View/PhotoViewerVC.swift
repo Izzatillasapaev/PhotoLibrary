@@ -9,22 +9,29 @@
 import UIKit
 
 final class PhotoViewerVC: UIViewController {
-
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var photos: [Photo] = []
     var indexPath: IndexPath!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-     }
+    }
+    
+    // on rotation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        self.collectionView.reloadData()
+    }
     
     @IBAction func dismissPressed(_ sender: Any) {
         self.dismissSelf()
         
     }
-
+    
 }
 
 extension PhotoViewerVC: UICollectionViewDataSource {
@@ -36,9 +43,9 @@ extension PhotoViewerVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoViewerCollectionViewCell
         let onShare: (_ url: String, _ image: UIImage, _ text: String) -> () = { url, image, text  in
             let share = [url]
-                   let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
-                   activityViewController.popoverPresentationController?.sourceView = self.view
-                   self.present(activityViewController, animated: true, completion: nil)
+            let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
         }
         
         
@@ -54,6 +61,6 @@ extension PhotoViewerVC: UICollectionViewDelegate {
 extension PhotoViewerVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-       }
+    }
 }
 

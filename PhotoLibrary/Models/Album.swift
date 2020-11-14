@@ -20,3 +20,4 @@ struct Album: Codable {
     let coverPhotoBaseUrl: String
     let coverPhotoMediaItemId: String?
 }
+
